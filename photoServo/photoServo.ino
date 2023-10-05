@@ -32,7 +32,7 @@ int pinArray[] = {photoPin1, photoPin2, photoPin3, photoPin4};
 int valueArray[] = {sensorValue1, sensorValue2, sensorValue3, sensorValue4};
 int maxArray[] = {maxValue1, maxValue2, maxValue3, maxValue4};
 int minArray[] = {minValue1, minValue2, minValue3, minValue4};
-int outArray[] = {outValue1, outValue2}
+int outArray[] = {outValue1, outValue2};
  
 
 int sensorValue;
