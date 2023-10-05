@@ -100,6 +100,16 @@ void calibrating(){
             }
         }
     }
+    for (int i = 0; i < arrayLength; i++){
+        Serial.print(f"Max value sensor ");
+        Serial.print(i);
+        Serial.print(": ");
+        Serial.println(maxArray[i]);
+        Serial.print("Min value sensor ");
+        Serial.print(i);
+        Serial.print(": ");
+        Serial.println(minArray[i]);
+    }
 }
 
 void sensorMapping(){
