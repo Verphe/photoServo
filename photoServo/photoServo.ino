@@ -70,6 +70,8 @@ void setup(){
 }
 
 void calibrating(){
+    //for (int i = 0; i > 
+
     servo1.write(0);
     servo2.write(0);
     delay(intervalCalibrate);
