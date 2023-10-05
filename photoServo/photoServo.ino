@@ -36,9 +36,15 @@ int outValue4;
 
 Servo servo1;
 Servo servo2;
-unsigned long intervalCalibrate = 1000;
+unsigned long intervalCalibrate = 50;
 const int lowerServoPin = 9;
 const int higherServoPin = 10;
+const int servo1Max = 180;
+const int servo1Min = 0;
+const int halfwayServo1 = 90;
+const int servo2Max = 180;
+const int servo2Min = 0;
+const int halfwayServo2 = 90;
 
 
 const int arrayLength = 4;
@@ -70,9 +76,26 @@ void setup(){
 }
 
 void calibrating(){
-    //for (int i = 0; i > 
+    for (int i = servo1Min; i < servo1Max + 1; i++){
+        servo1.write(i);
+        delay(intervalCalibrate);
+        if (i == halfwayServo1){
+            for (int x = servo2Min; x < servo2Max + 1; x++){
+                servo2.write(x);
+                delay(intervalCalibrate);
+            }
+            servo2.write(halfwayServo2);
+        }
+        if (i == servo1Max){
+            for (int x = servo2Min; x < servo2Max + 1; x++){
+                servo2.write(x);
+                delay(intervalCalibrate);
+            }
+        }
+    }
 
-    servo1.write(0);
+
+    /*servo1.write(0);
     servo2.write(0);
     delay(intervalCalibrate);
     servo1.write(90);
@@ -83,7 +106,7 @@ void calibrating(){
     servo2.write(90);
     delay(intervalCalibrate);
     servo2.write(180);
-    delay(intervalCalibrate);
+    delay(intervalCalibrate);*/
     
     //La sensortårnet snurre rundt for å sjekke sensorverider
 
