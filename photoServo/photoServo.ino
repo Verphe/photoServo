@@ -39,6 +39,7 @@ int sensorValue;
 int sensorMax = 0;
 int sensorMin = 1023;
 
+//Hallo
 
 void setup(){
     Serial.begin(9600);
