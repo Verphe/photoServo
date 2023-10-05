@@ -7,6 +7,7 @@
 #define maxValue 1023
 #define minValue 0
 
+
 int sensorValue1 = 0;
 int sensorValue2 = 0;
 int sensorValue3 = 0;
@@ -27,6 +28,19 @@ int outValue2;
 int outValue3;
 int outValue4;
 
+///////////////////////////////////////
+
+//               SERVO               //
+
+//////////////////////////////////////
+
+Servo servo1;
+Servo servo2;
+unsigned long intervalCalibrate = 1000;
+const int lowerServoPin = 9;
+const int higherServoPin = 10;
+
+
 const int arrayLength = 4;
 int pinArray[] = {photoPin1, photoPin2, photoPin3, photoPin4};
 int valueArray[] = {sensorValue1, sensorValue2, sensorValue3, sensorValue4};
@@ -39,7 +53,7 @@ int sensorValue;
 int sensorMax = 0;
 int sensorMin = 1023;
 
-//Hallo
+
 
 void setup(){
     Serial.begin(9600);
@@ -48,6 +62,27 @@ void setup(){
         pinMode(pinArray[i], INPUT_PULLUP);
     }
 
+    servo1.attach(lowerServoPin);
+    servo2.attach(higherServoPin);
+     
+    calibrating();
+
+}
+
+void calibrating(){
+    servo1.write(0);
+    servo2.write(0);
+    delay(intervalCalibrate);
+    servo1.write(90);
+    delay(intervalCalibrate);
+    servo1.write(180);
+    delay(intervalCalibrate);
+    servo1.write(90);
+    servo2.write(90);
+    delay(intervalCalibrate);
+    servo2.write(180);
+    delay(intervalCalibrate);
+    
     //La sensortårnet snurre rundt for å sjekke sensorverider
 
     while (millis() < 5000){
@@ -63,7 +98,6 @@ void setup(){
             }
         }
     }
-
 }
 
 void sensorMapping(){
